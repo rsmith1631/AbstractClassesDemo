@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +13,7 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             /*
-             * Todo follow all comments!! 
+             * Done follow all comments!! 
              */
 
             #region Vehicles
@@ -38,14 +40,56 @@ namespace ConsoleUI
              * 
              * Set the properties with object initializer syntax
              */
-
+            var car1 = new Car()
+            {
+                HasTrunk = true,
+                Year = "2020",
+                Make = "Toyota",
+                Model = "Corolla"
+            };
+            var motorcycle = new Motorcycle()
+            {
+                HasSideCart = true,
+                Year = "2023",
+                Make = "Ducati",
+                Model = "Monster"
+            };
+            Vehicle car2 = new Car()
+            {
+                HasTrunk = true,
+                Year = "2012",
+                Make = "Toyota",
+                Model = "Prius"
+            };
+            Vehicle motorcycle2 = new Motorcycle()
+            {
+                HasSideCart = true,
+                Year = "2018",
+                Make = "Ducati",
+                Model = "Multistrada"
+            };
             /*
              * Add the 4 vehicles to the list
              * Using a foreach loop iterate over each of the properties
              */
 
-            // Call each of the drive methods for one car and one motorcycle
+            // Call each of the drive methods for one car and Vehione motorcycle
+            var vehicles = new List<Vehicle>();
+            vehicles.Add(car1);
+            vehicles.Add(motorcycle);
+            vehicles.Add(car2);
+            vehicles.Add(motorcycle2);
 
+            foreach (var vehicle in vehicles)
+            {
+                Console.WriteLine($"Year: {vehicle.Year}");
+                Console.WriteLine($"Make: {vehicle.Make}");
+                Console.WriteLine($"Model: {vehicle.Model}");
+                Console.WriteLine();
+                vehicle.DriveVirtual();
+                vehicle.DriveAbstract();
+                Console.WriteLine();
+            }
             #endregion            
             Console.ReadLine();
         }
